@@ -45,6 +45,11 @@ resource "azurerm_windows_virtual_machine" "vm" {
   network_interface_ids = [azurerm_network_interface.nic[count.index].id]
   tags                  = var.tags
 
+  depends_on = [
+    azurerm_availability_set.windows_aset,
+    azurerm_network_interface.nic
+  ]
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -82,6 +87,11 @@ resource "azurerm_virtual_machine_extension" "antimalware" {
             "day": "7",
             "time": "120",
             "scanType": "Quick"
+        },
+        "Exclusions": {
+            "Extensions": "",
+            "Paths": "",
+            "Processes": ""
         }
     }
 SETTINGS
