@@ -1,0 +1,20 @@
+# Terraform local execution files & directories
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Sensitive variables
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI & editor files
+.azure/
+.vscode/
+*.swp
